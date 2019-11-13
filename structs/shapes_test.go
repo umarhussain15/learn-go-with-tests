@@ -35,3 +35,20 @@ func TestArea(t *testing.T) {
 	})
 
 }
+
+func TestArea2(t *testing.T) {
+	areaTests := []struct {
+		shape Shape
+		want  float64
+	}{
+		{Rectangle{12, 6}, 72.0},
+		{Circle{10}, math.Pi * 100},
+	}
+
+	for _, v := range areaTests {
+		got := v.shape.Area()
+		if got != v.want {
+			t.Errorf("got %g want %g", got, v.want)
+		}
+	}
+}
